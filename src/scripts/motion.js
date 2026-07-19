@@ -127,34 +127,55 @@ function initHero() {
   });
 }
 
-/* Rotating word in the hero */
-function initRotator() {
-  const rotator = document.querySelector('[data-rotator]');
-  if (!rotator) return;
-
-  const words = JSON.parse(rotator.getAttribute('data-rotator') || '[]');
-  if (words.length < 2) return;
-
-  let i = 0;
-  const el = rotator.querySelector('span');
+/* Typewriter word in the hero: types a word, holds, deletes, types the next. */
+function initTypewriter() {
+  const el = document.querySelector('[data-typewriter]');
   if (!el) return;
 
-  if (prefersReduced) return;
+  const words = JSON.parse(el.getAttribute('data-typewriter') || '[]');
+  if (!words.length) return;
 
-  setInterval(() => {
-    i = (i + 1) % words.length;
-    gsap
-      .timeline()
-      .to(el, { yPercent: -110, opacity: 0, duration: 0.35, ease: 'power2.in' })
-      .add(() => {
-        el.textContent = words[i];
-      })
-      .fromTo(
-        el,
-        { yPercent: 110, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }
-      );
-  }, 2200);
+  // Reduced motion: just show the first word, no animation.
+  if (prefersReduced) {
+    el.textContent = words[0];
+    return;
+  }
+
+  const TYPE_MS = 95; // per character while typing
+  const DELETE_MS = 45; // per character while deleting
+  const HOLD_MS = 1500; // pause once a word is fully typed
+  const BETWEEN_MS = 350; // pause before typing the next word
+  const START_MS = 650; // delay after the hero intro settles
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    const word = words[wordIndex];
+
+    if (!deleting) {
+      charIndex += 1;
+      el.textContent = word.slice(0, charIndex);
+      if (charIndex === word.length) {
+        deleting = true;
+        return window.setTimeout(tick, HOLD_MS);
+      }
+      return window.setTimeout(tick, TYPE_MS);
+    }
+
+    charIndex -= 1;
+    el.textContent = word.slice(0, charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      return window.setTimeout(tick, BETWEEN_MS);
+    }
+    return window.setTimeout(tick, DELETE_MS);
+  }
+
+  el.textContent = '';
+  window.setTimeout(tick, START_MS);
 }
 
 /* ------------------------------------------------------------------ *
@@ -233,7 +254,7 @@ function boot() {
   initRocketCursor();
   initMagnetic();
   initHero();
-  initRotator();
+  initTypewriter();
   initReveals();
   initNav();
   ScrollTrigger.refresh();

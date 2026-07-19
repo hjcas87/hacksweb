@@ -25,11 +25,12 @@ const line2 = ['tu', 'marca'];
         {line2.map((w) => (
           <span class="word-mask mr-[0.25em]"><span>{w}</span></span>
         ))}
-        <span
-          class="inline-block overflow-hidden bg-gradient-to-r from-violet via-cyan to-lime bg-clip-text align-top text-transparent"
-          data-rotator={JSON.stringify(heroRotator)}
-        >
-          <span class="inline-block">{heroRotator[0]}</span>
+        <span class="inline-flex items-baseline align-top">
+          <span
+            data-typewriter={JSON.stringify(heroRotator)}
+            class="bg-gradient-to-r from-violet via-cyan to-lime bg-clip-text text-transparent"
+            >{heroRotator[0]}</span
+          ><span data-caret aria-hidden="true" class="caret ml-1 font-light text-cyan">|</span>
         </span>
       </span>
     </h1>

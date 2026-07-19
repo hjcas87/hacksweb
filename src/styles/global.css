@@ -157,6 +157,16 @@ body {
   transform: translateY(110%);
 }
 
+/* Typewriter caret */
+.caret {
+  animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .link-underline {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
@@ -174,7 +184,8 @@ body {
     opacity: 1 !important;
     transform: none !important;
   }
-  .marquee {
+  .marquee,
+  .caret {
     animation: none;
   }
 }
