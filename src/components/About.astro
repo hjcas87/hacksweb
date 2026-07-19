@@ -36,10 +36,10 @@ import { stats } from '../data/site';
         <span class="inline-block h-px w-10 bg-lime"></span>
         Quién está detrás
       </p>
-      <h2 class="reveal font-display text-4xl font-bold leading-tight tracking-tight lg:text-5xl">
+      <h2 class="reveal font-display text-h2 font-bold">
         Un equipo que se pone tu marca al hombro
       </h2>
-      <p class="reveal mt-6 text-lg text-muted">
+      <p class="reveal mt-6 text-lead text-muted">
         HACKS nació para acompañar a las marcas de verdad: con estrategia, cercanía y
         obsesión por los resultados. No somos una agencia más; somos el equipo que trata
         tu negocio como si fuera propio.
@@ -54,7 +54,7 @@ import { stats } from '../data/site';
         {
           stats.map((stat) => (
             <div>
-              <dt class="font-display text-4xl font-bold text-ink lg:text-5xl">
+              <dt class="font-display text-stat font-bold text-ink">
                 <span data-count={stat.value}>0</span>
                 {stat.suffix}
               </dt>

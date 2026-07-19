@@ -51,6 +51,40 @@ body {
   font-family: var(--font-display);
 }
 
+/* ------------------------------------------------------------------ *
+ *  Typography scale — single source of truth
+ *
+ *  All headings/leads use these classes. `--font-scale` is the master
+ *  knob: lower it to shrink every heading + lead at once (e.g. 0.85).
+ *  These rules are unlayered, so they win over Tailwind text-* utilities.
+ * ------------------------------------------------------------------ */
+:root {
+  --font-scale: 0.9;
+}
+.text-display {
+  font-size: calc(clamp(2.5rem, 8vw, 7rem) * var(--font-scale));
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.text-h2 {
+  font-size: calc(clamp(2rem, 5vw, 3.75rem) * var(--font-scale));
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+.text-h3 {
+  font-size: calc(clamp(1.35rem, 3vw, 2.25rem) * var(--font-scale));
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.text-lead {
+  font-size: calc(clamp(1.05rem, 1.5vw, 1.25rem) * var(--font-scale));
+  line-height: 1.6;
+}
+.text-stat {
+  font-size: calc(clamp(1.9rem, 4vw, 3rem) * var(--font-scale));
+  line-height: 1;
+}
+
 /* Deep-space backdrop: layered radial glows + a faint star grid */
 .space-bg {
   position: fixed;
