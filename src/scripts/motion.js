@@ -7,13 +7,23 @@ gsap.registerPlugin(ScrollTrigger);
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+// Shared Lenis instance (null when reduced motion is on).
+let lenis = null;
+
+function scrollToHash(hash) {
+  const el = document.querySelector(hash);
+  if (!el) return;
+  if (lenis) lenis.scrollTo(el, { offset: -60 });
+  else el.scrollIntoView({ behavior: 'smooth' });
+}
+
 /* ------------------------------------------------------------------ *
  *  Smooth scroll (Lenis) synced with ScrollTrigger
  * ------------------------------------------------------------------ */
 function initSmoothScroll() {
   if (prefersReduced) return;
 
-  const lenis = new Lenis({
+  lenis = new Lenis({
     duration: 1.1,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
@@ -23,15 +33,58 @@ function initSmoothScroll() {
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
-  // anchor links → lenis
+  // anchor links → lenis (links inside the mobile menu are handled there)
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    if (a.closest('#mobile-menu')) return;
     a.addEventListener('click', (e) => {
       const target = a.getAttribute('href');
       if (target && target.length > 1) {
         e.preventDefault();
-        lenis.scrollTo(target, { offset: -60 });
+        scrollToHash(target);
       }
     });
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ *  Mobile menu
+ * ------------------------------------------------------------------ */
+function initMobileMenu() {
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+
+  const setOpen = (open) => {
+    menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    if (lenis) open ? lenis.stop() : lenis.start();
+  };
+
+  toggle.addEventListener('click', () =>
+    setOpen(!menu.classList.contains('is-open'))
+  );
+
+  // in-page links: close, then scroll to the section
+  menu.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = a.getAttribute('href');
+      setOpen(false);
+      if (target && target.length > 1) {
+        window.setTimeout(() => scrollToHash(target), 60);
+      }
+    });
+  });
+
+  // external links (socials, WhatsApp, email): just close
+  menu.querySelectorAll('a:not([href^="#"])').forEach((a) => {
+    a.addEventListener('click', () => setOpen(false));
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) setOpen(false);
   });
 }
 
@@ -257,6 +310,7 @@ function boot() {
   initTypewriter();
   initReveals();
   initNav();
+  initMobileMenu();
   ScrollTrigger.refresh();
 }
 

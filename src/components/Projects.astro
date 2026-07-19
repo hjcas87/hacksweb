@@ -14,7 +14,7 @@ import { projects } from '../data/site';
       </p>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
       {
         projects.map((project, i) => (
           <a
@@ -22,8 +22,10 @@ import { projects } from '../data/site';
             data-cursor
             class:list={[
               'group reveal relative overflow-hidden rounded-2xl border border-white/10',
-              // vary heights for an editorial, non-uniform grid
-              i % 5 === 0 ? 'row-span-2 aspect-[3/4] md:aspect-auto' : 'aspect-square',
+              // uniform stack on mobile; editorial masonry only from md up
+              i % 5 === 0
+                ? 'aspect-[16/10] sm:aspect-square md:row-span-2 md:aspect-auto'
+                : 'aspect-[16/10] sm:aspect-square',
             ]}
           >
             <div

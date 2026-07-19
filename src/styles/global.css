@@ -191,6 +191,55 @@ body {
   transform: translateY(110%);
 }
 
+/* ------------------------------------------------------------------ *
+ *  Mobile menu + hamburger icon
+ * ------------------------------------------------------------------ */
+.mobile-menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.4s var(--ease-out-expo),
+    transform 0.4s var(--ease-out-expo);
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+body.menu-open {
+  overflow: hidden;
+}
+
+.menu-icon {
+  position: relative;
+  width: 24px;
+  height: 12px;
+}
+.menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    transform 0.35s var(--ease-out-expo),
+    opacity 0.2s ease;
+}
+.menu-icon span:nth-child(1) {
+  top: 0;
+}
+.menu-icon span:nth-child(2) {
+  bottom: 0;
+}
+body.menu-open .menu-icon span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+body.menu-open .menu-icon span:nth-child(2) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
 /* Typewriter caret */
 .caret {
   animation: blink 1.05s steps(1) infinite;

@@ -2,13 +2,19 @@
 import { nav, contact } from '../data/site';
 
 const whatsappUrl = `https://wa.me/${contact.whatsapp}`;
+const mailtoUrl = `mailto:${contact.email}`;
+const socials = [
+  { label: 'Instagram', href: contact.instagramStudio },
+  { label: 'LinkedIn', href: contact.linkedin },
+  { label: 'YouTube', href: 'https://www.youtube.com/@podhackss' },
+];
 ---
 
 <header
   id="nav"
-  class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 [&.is-scrolled]:bg-space/70 [&.is-scrolled]:backdrop-blur-xl [&.is-scrolled]:border-b [&.is-scrolled]:border-white/5"
+  class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 [&.is-scrolled]:border-b [&.is-scrolled]:border-white/5 [&.is-scrolled]:bg-space/70 [&.is-scrolled]:backdrop-blur-xl"
 >
-  <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+  <nav class="relative z-50 mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
     <a href="#top" class="group flex items-center gap-2" data-magnetic="0.2">
       <span class="font-display text-xl font-bold tracking-tight">HACKS</span>
       <span
@@ -31,14 +37,81 @@ const whatsappUrl = `https://wa.me/${contact.whatsapp}`;
       }
     </ul>
 
-    <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener"
-      data-magnetic="0.4"
-      class="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold backdrop-blur transition-colors hover:border-lime hover:text-lime"
-    >
-      Hablemos
-    </a>
+    <div class="flex items-center gap-2">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener"
+        data-magnetic="0.4"
+        class="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold backdrop-blur transition-colors hover:border-lime hover:text-lime md:inline-flex"
+      >
+        Hablemos
+      </a>
+
+      <!-- Hamburger (mobile only) -->
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="flex h-11 w-11 items-center justify-center text-ink md:hidden"
+      >
+        <span class="menu-icon">
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile menu overlay -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu fixed inset-0 z-40 flex flex-col justify-between bg-space/95 px-6 pt-28 pb-10 backdrop-blur-xl md:hidden"
+  >
+    <ul class="flex flex-col gap-1">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block py-2 font-display text-4xl font-light lowercase text-ink transition-colors hover:text-lime"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="space-y-6">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime px-6 py-4 font-display font-semibold text-space"
+      >
+        Hablemos por WhatsApp →
+      </a>
+
+      <div class="border-t border-white/10 pt-6">
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+          {
+            socials.map((s) => (
+              <a href={s.href} target="_blank" rel="noopener" class="hover:text-ink">
+                {s.label}
+              </a>
+            ))
+          }
+        </div>
+        <div class="mt-4 space-y-1 text-sm">
+          <a href={mailtoUrl} class="block text-ink/80 hover:text-ink">{contact.email}</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener" class="block text-ink/80 hover:text-ink">
+            {contact.whatsappDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
