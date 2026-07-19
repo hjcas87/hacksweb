@@ -1,0 +1,67 @@
+---
+import { monthlyServices, oneShotServices } from '../data/site';
+---
+
+<section id="servicios" class="relative px-6 py-24 lg:px-10 lg:py-36">
+  <div class="mx-auto max-w-7xl">
+    <div class="reveal mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-lime">
+          <span class="inline-block h-px w-10 bg-lime"></span>
+          Qué hacemos
+        </p>
+        <h2 class="font-display text-4xl font-bold leading-none tracking-tight lg:text-6xl">
+          Servicios que<br />mueven la aguja
+        </h2>
+      </div>
+      <p class="max-w-sm text-muted">
+        Trabajamos por abono mensual para acompañarte a largo plazo, o con proyectos
+        puntuales cuando necesitás un empujón específico.
+      </p>
+    </div>
+
+    <!-- Monthly services · big interactive rows -->
+    <p class="reveal mb-2 text-sm font-semibold uppercase tracking-wider text-muted">
+      Servicios mensuales
+    </p>
+    <ul class="border-t border-white/10">
+      {
+        monthlyServices.map((service) => (
+          <li
+            data-cursor
+            class="group reveal relative grid grid-cols-[auto_1fr] items-center gap-6 border-b border-white/10 py-7 transition-colors duration-500 hover:bg-white/[0.03] md:grid-cols-[6rem_1fr_1.5fr] md:py-9"
+          >
+            <span class="font-display text-sm text-muted transition-colors group-hover:text-lime md:text-base">
+              {service.id}
+            </span>
+            <h3 class="font-display text-2xl font-semibold tracking-tight transition-transform duration-500 group-hover:translate-x-2 md:text-4xl">
+              {service.title}
+            </h3>
+            <p class="col-span-2 text-muted md:col-span-1 md:text-right md:opacity-60 md:transition-opacity md:duration-500 md:group-hover:opacity-100">
+              {service.desc}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- One-shot services · pill cloud -->
+    <div class="mt-20">
+      <p class="reveal mb-6 text-sm font-semibold uppercase tracking-wider text-muted">
+        Proyectos one-shot
+      </p>
+      <div class="flex flex-wrap gap-3">
+        {
+          oneShotServices.map((service) => (
+            <span
+              data-cursor
+              class="reveal cursor-default rounded-full border border-white/12 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-ink/85 transition-all duration-300 hover:-translate-y-1 hover:border-lime hover:text-lime"
+            >
+              {service}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

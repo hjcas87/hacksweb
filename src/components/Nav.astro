@@ -1,0 +1,44 @@
+---
+import { nav, contact } from '../data/site';
+
+const whatsappUrl = `https://wa.me/${contact.whatsapp}`;
+---
+
+<header
+  id="nav"
+  class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 [&.is-scrolled]:bg-space/70 [&.is-scrolled]:backdrop-blur-xl [&.is-scrolled]:border-b [&.is-scrolled]:border-white/5"
+>
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+    <a href="#top" class="group flex items-center gap-2" data-magnetic="0.2">
+      <span class="font-display text-xl font-bold tracking-tight">HACKS</span>
+      <span
+        class="h-1.5 w-1.5 rounded-full bg-lime transition-transform duration-500 group-hover:scale-150"
+      ></span>
+    </a>
+
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="link-underline text-sm font-medium text-muted transition-colors hover:text-ink"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener"
+      data-magnetic="0.4"
+      class="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold backdrop-blur transition-colors hover:border-lime hover:text-lime"
+    >
+      Hablemos
+    </a>
+  </nav>
+</header>

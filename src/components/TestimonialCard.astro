@@ -1,0 +1,27 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+  handle: string;
+}
+
+const { quote, author, handle } = Astro.props;
+---
+
+<figure
+  data-cursor
+  class="flex w-[85vw] shrink-0 flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-space-2/60 p-7 backdrop-blur-sm transition-colors duration-500 hover:border-white/25 sm:w-[26rem]"
+>
+  <blockquote class="text-[15px] leading-relaxed text-ink/90">“{quote}”</blockquote>
+  <figcaption class="flex items-center gap-3">
+    <span
+      class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan font-display text-sm font-bold text-space"
+    >
+      {author.charAt(0)}
+    </span>
+    <div>
+      <p class="font-display text-sm font-semibold">{author}</p>
+      <p class="text-xs text-muted">{handle}</p>
+    </div>
+  </figcaption>
+</figure>

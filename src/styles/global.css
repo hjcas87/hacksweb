@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ *  UNIVERSO HACKS · design tokens
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-space: #05050b;
+  --color-space-2: #0b0b16;
+  --color-space-3: #14142a;
+  --color-ink: #f5f5fb;
+  --color-muted: #9a9ab8;
+  --color-violet: #8b5cff;
+  --color-cyan: #34e3ff;
+  --color-lime: #d8ff4f;
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ *  Base
+ * ------------------------------------------------------------------ */
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-space);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Fine-pointer devices get the rocket cursor → hide the native one */
+@media (hover: hover) and (pointer: fine) {
+  body.has-rocket,
+  body.has-rocket * {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-space);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Deep-space backdrop: layered radial glows + a faint star grid */
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60rem 60rem at 15% -10%, rgba(139, 92, 255, 0.18), transparent 60%),
+    radial-gradient(50rem 50rem at 100% 10%, rgba(52, 227, 255, 0.12), transparent 55%),
+    radial-gradient(40rem 40rem at 50% 120%, rgba(216, 255, 79, 0.08), transparent 60%),
+    var(--color-space);
+}
+.space-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.12;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+}
+
+/* ------------------------------------------------------------------ *
+ *  Rocket cursor
+ * ------------------------------------------------------------------ */
+#rocket {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  font-size: 26px;
+  line-height: 1;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate(-100px, -100px);
+  filter: drop-shadow(0 0 10px rgba(139, 92, 255, 0.6));
+  transition: scale 0.25s var(--ease-out-expo);
+}
+#rocket.is-hovering {
+  scale: 1.6;
+}
+#rocket-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+  border: 1px solid rgba(216, 255, 79, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.3s ease, scale 0.3s var(--ease-out-expo);
+}
+#rocket-ring.is-hovering {
+  opacity: 1;
+  scale: 1.4;
+}
+
+/* ------------------------------------------------------------------ *
+ *  Marquee
+ * ------------------------------------------------------------------ */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+.marquee.reverse {
+  animation-direction: reverse;
+}
+.marquee-track:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Reveal (JS adds .is-in when in view; graceful without JS)
+ * ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Split-line words used in the hero */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.word-mask > span {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out-expo);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .word-mask > span {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .marquee {
+    animation: none;
+  }
+}

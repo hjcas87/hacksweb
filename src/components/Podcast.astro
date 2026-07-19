@@ -1,0 +1,56 @@
+---
+import { podcast } from '../data/site';
+
+// Derive the Spotify embed URL from the show link.
+const spotifyEmbed = 'https://open.spotify.com/embed/show/6piM7FMLnoWfSv2AOfR949?theme=0';
+---
+
+<section id="podhacks" class="relative px-6 py-24 lg:px-10 lg:py-36">
+  <div
+    class="reveal mx-auto grid max-w-7xl gap-10 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-space-2 to-space-3 p-8 lg:grid-cols-2 lg:items-center lg:p-14"
+  >
+    <div>
+      <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-lime">
+        <span class="inline-block h-px w-10 bg-lime"></span>
+        {podcast.handle}
+      </p>
+      <h2 class="font-display text-5xl font-bold tracking-tight lg:text-7xl">
+        {podcast.title}
+      </h2>
+      <p class="mt-6 max-w-md text-lg text-muted">{podcast.desc}</p>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href={podcast.spotify}
+          target="_blank"
+          rel="noopener"
+          data-magnetic="0.35"
+          class="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 font-display font-semibold text-space transition-transform hover:scale-[1.03]"
+        >
+          Escuchar en Spotify
+        </a>
+        <a
+          href={podcast.youtube}
+          target="_blank"
+          rel="noopener"
+          class="link-underline inline-flex items-center gap-2 px-2 py-3 font-medium"
+        >
+          Ver en YouTube ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl">
+      <iframe
+        src={spotifyEmbed}
+        width="100%"
+        height="352"
+        style="border:0;"
+        loading="lazy"
+        title="Podhacks en Spotify"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>

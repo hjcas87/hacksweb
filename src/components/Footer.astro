@@ -1,0 +1,89 @@
+---
+import { contact, nav } from '../data/site';
+
+const year = 2026;
+const socials = [
+  { label: 'Instagram', href: contact.instagramStudio },
+  { label: 'LinkedIn', href: contact.linkedin },
+  { label: 'YouTube', href: 'https://www.youtube.com/@podhackss' },
+];
+---
+
+<footer class="border-t border-white/10 px-6 py-14 lg:px-10">
+  <div class="mx-auto max-w-7xl">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div>
+        <a href="#top" class="flex items-center gap-2">
+          <span class="font-display text-2xl font-bold tracking-tight">HACKS</span>
+          <span class="h-1.5 w-1.5 rounded-full bg-lime"></span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-muted">
+          Universo HACKS · Estudio de marketing digital. Llevamos tu marca a otra órbita.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-10 sm:grid-cols-3">
+        <div>
+          <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-muted">Menú</p>
+          <ul class="space-y-2 text-sm">
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} class="link-underline text-ink/80 hover:text-ink">
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-muted">Redes</p>
+          <ul class="space-y-2 text-sm">
+            {
+              socials.map((s) => (
+                <li>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="link-underline text-ink/80 hover:text-ink"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-muted">Contacto</p>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href={`mailto:${contact.email}`} class="link-underline text-ink/80 hover:text-ink">
+                {contact.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`https://wa.me/${contact.whatsapp}`}
+                target="_blank"
+                rel="noopener"
+                class="link-underline text-ink/80 hover:text-ink"
+              >
+                {contact.whatsappDisplay}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-2 border-t border-white/5 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} HACKS Digital. Todos los derechos reservados.</p>
+      <p>Hecho con 🚀 en Argentina.</p>
+    </div>
+  </div>
+</footer>

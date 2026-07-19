@@ -1,0 +1,54 @@
+---
+import { projects } from '../data/site';
+---
+
+<section id="proyectos" class="relative px-6 py-24 lg:px-10 lg:py-36">
+  <div class="mx-auto max-w-7xl">
+    <div class="reveal mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <h2 class="font-display text-4xl font-bold leading-none tracking-tight lg:text-6xl">
+        Marcas que ya<br />están en órbita
+      </h2>
+      <p class="max-w-sm text-muted">
+        Una selección de proyectos, uno por cada cosa que hacemos. De Tiendanube a pauta,
+        de shootings a e-mail marketing.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+      {
+        projects.map((project, i) => (
+          <a
+            href="#"
+            data-cursor
+            class:list={[
+              'group reveal relative overflow-hidden rounded-2xl border border-white/10',
+              // vary heights for an editorial, non-uniform grid
+              i % 5 === 0 ? 'row-span-2 aspect-[3/4] md:aspect-auto' : 'aspect-square',
+            ]}
+          >
+            <div
+              class:list={[
+                'absolute inset-0 bg-gradient-to-br transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110',
+                project.tint,
+              ]}
+            />
+            <div class="absolute inset-0 bg-space/20 transition-colors duration-500 group-hover:bg-space/0" />
+
+            <div class="absolute inset-0 flex flex-col justify-end p-5">
+              <p class="translate-y-2 text-xs font-semibold uppercase tracking-wider text-lime opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                {project.service}
+              </p>
+              <h3 class="font-display text-xl font-semibold text-ink lg:text-2xl">
+                {project.client}
+              </h3>
+            </div>
+
+            <span class="absolute right-4 top-4 text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              ↗
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

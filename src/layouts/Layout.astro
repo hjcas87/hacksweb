@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'HACKS · Estudio de marketing digital',
+  description = 'Estudio de marketing digital. Llevamos tu marca a otra órbita: social, paid media, e-commerce, contenido y branding.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#05050b" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="space-bg" aria-hidden="true"></div>
+
+    <!-- Rocket cursor (fine-pointer devices only; hidden from AT) -->
+    <div id="rocket-ring" aria-hidden="true"></div>
+    <div id="rocket" aria-hidden="true">🚀</div>
+
+    <slot />
+
+    <script>
+      import '../scripts/motion.js';
+    </script>
+  </body>
+</html>

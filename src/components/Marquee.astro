@@ -1,0 +1,19 @@
+---
+import { marqueeItems } from '../data/site';
+
+// Duplicate the list so the -50% keyframe loops seamlessly.
+const items = [...marqueeItems, ...marqueeItems];
+---
+
+<section aria-hidden="true" class="marquee-track relative overflow-hidden border-y border-white/5 py-6">
+  <div class="marquee" style="--duration: 32s;">
+    {
+      items.map((item) => (
+        <div class="flex items-center gap-6 px-6">
+          <span class="font-display text-2xl font-medium text-ink/80 lg:text-4xl">{item}</span>
+          <span class="text-lime">✦</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

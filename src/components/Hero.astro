@@ -1,0 +1,72 @@
+---
+import { heroRotator, contact } from '../data/site';
+
+const whatsappUrl = `https://wa.me/${contact.whatsapp}`;
+
+// Static words revealed on load via the word-mask intro animation.
+const line1 = ['Hacemos', 'que'];
+const line2 = ['tu', 'marca'];
+---
+
+<section id="top" class="relative flex min-h-screen flex-col justify-center px-6 pt-28 pb-16 lg:px-10">
+  <div class="mx-auto w-full max-w-7xl">
+    <p class="reveal mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-muted">
+      <span class="inline-block h-px w-10 bg-lime"></span>
+      Estudio de marketing digital · AR
+    </p>
+
+    <h1 class="font-display text-[clamp(2.75rem,9vw,7.5rem)] font-bold leading-[0.95] tracking-tight">
+      <span class="block">
+        {line1.map((w) => (
+          <span class="word-mask mr-[0.25em]"><span>{w}</span></span>
+        ))}
+      </span>
+      <span class="block">
+        {line2.map((w) => (
+          <span class="word-mask mr-[0.25em]"><span>{w}</span></span>
+        ))}
+        <span
+          class="inline-block overflow-hidden bg-gradient-to-r from-violet via-cyan to-lime bg-clip-text align-top text-transparent"
+          data-rotator={JSON.stringify(heroRotator)}
+        >
+          <span class="inline-block">{heroRotator[0]}</span>
+        </span>
+      </span>
+    </h1>
+
+    <p class="reveal mt-8 max-w-xl text-lg text-muted lg:text-xl">
+      Somos HACKS. Estrategia, contenido y pauta que llevan tu marca a otra órbita.
+      Del social al e-commerce, hacemos que cada acción sume a tu negocio.
+    </p>
+
+    <div class="reveal mt-10 flex flex-wrap items-center gap-4">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener"
+        data-magnetic="0.4"
+        class="group inline-flex items-center gap-2 rounded-full bg-lime px-7 py-3.5 font-display font-semibold text-space transition-transform hover:scale-[1.03]"
+      >
+        Despeguemos juntos
+        <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+      </a>
+      <a
+        href="#servicios"
+        class="link-underline inline-flex items-center gap-2 px-2 py-3.5 font-medium text-ink"
+      >
+        Ver servicios
+      </a>
+    </div>
+  </div>
+
+  <a
+    href="#servicios"
+    aria-label="Bajar a servicios"
+    class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted md:flex"
+  >
+    <span class="text-[10px] font-semibold uppercase tracking-[0.3em]">Scroll</span>
+    <span class="flex h-9 w-5 justify-center rounded-full border border-white/20 p-1">
+      <span class="h-1.5 w-1 animate-bounce rounded-full bg-lime"></span>
+    </span>
+  </a>
+</section>
