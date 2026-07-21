@@ -9,9 +9,9 @@
   --color-space-3: #14142a;
   --color-ink: #f5f5fb;
   --color-muted: #9a9ab8;
-  --color-violet: #8b5cff;
-  --color-cyan: #34e3ff;
-  --color-lime: #d8ff4f;
+  /* Brand accents (from the HACKS kit) */
+  --color-yellow: #f5dc89;
+  --color-lila: #e4d2e9;
 
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -43,12 +43,26 @@ body {
 }
 
 ::selection {
-  background: var(--color-lime);
+  background: var(--color-yellow);
   color: var(--color-space);
 }
 
 .font-display {
   font-family: var(--font-display);
+}
+
+/* Brand gradient text — mirrors the yellow/lila neon of the logo mark.
+   Used on the hero typed word and the closing CTA. */
+.text-brand-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-yellow),
+    var(--color-lila) 55%,
+    var(--color-yellow)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* ------------------------------------------------------------------ *
@@ -85,25 +99,31 @@ body {
   line-height: 1;
 }
 
-/* Deep-space backdrop: layered radial glows + a faint star grid */
+/* Deep-space backdrop: layered brand glows + the triangle pattern from the kit */
 .space-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(60rem 60rem at 15% -10%, rgba(139, 92, 255, 0.18), transparent 60%),
-    radial-gradient(50rem 50rem at 100% 10%, rgba(52, 227, 255, 0.12), transparent 55%),
-    radial-gradient(40rem 40rem at 50% 120%, rgba(216, 255, 79, 0.08), transparent 60%),
+    radial-gradient(60rem 60rem at 15% -10%, rgba(228, 210, 233, 0.16), transparent 60%),
+    radial-gradient(50rem 50rem at 100% 10%, rgba(245, 220, 137, 0.12), transparent 55%),
+    radial-gradient(40rem 40rem at 50% 120%, rgba(228, 210, 233, 0.09), transparent 60%),
     var(--color-space);
 }
 .space-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: 0.12;
-  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+  background-image: var(--pattern-triangles);
+  background-size: 116px 100px;
+  opacity: 0.05;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+}
+
+/* Staggered outlined triangles — the "fondo de triángulos" of the brand kit,
+   rebuilt as an inline SVG so it stays crisp and can be tinted. */
+:root {
+  --pattern-triangles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='120' viewBox='0 0 140 120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.4'%3E%3Cpath d='M35 10 L62 56 L8 56 Z'/%3E%3Cpath d='M105 64 L128 104 L82 104 Z'/%3E%3Cpath d='M18 74 L34 102 L2 102 Z'/%3E%3Cpath d='M122 8 L138 36 L106 36 Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ------------------------------------------------------------------ *
@@ -114,12 +134,13 @@ body {
   top: 0;
   left: 0;
   z-index: 9999;
-  font-size: 26px;
-  line-height: 1;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
   pointer-events: none;
   will-change: transform;
   transform: translate(-100px, -100px);
-  filter: drop-shadow(0 0 10px rgba(139, 92, 255, 0.6));
+  filter: drop-shadow(0 0 10px rgba(245, 220, 137, 0.55));
   transition: scale 0.25s var(--ease-out-expo);
 }
 #rocket.is-hovering {
@@ -133,7 +154,7 @@ body {
   width: 42px;
   height: 42px;
   margin: -21px 0 0 -21px;
-  border: 1px solid rgba(216, 255, 79, 0.5);
+  border: 1px solid rgba(228, 210, 233, 0.55);
   border-radius: 50%;
   pointer-events: none;
   will-change: transform;
@@ -240,6 +261,20 @@ body.menu-open .menu-icon span:nth-child(2) {
   transform: translateY(-5px) rotate(-45deg);
 }
 
+/* Decorative brand stickers (planet / bolt): slow idle drift */
+.sticker-float {
+  animation: sticker-float 7s ease-in-out infinite;
+}
+@keyframes sticker-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(4deg);
+  }
+}
+
 /* Typewriter caret */
 .caret {
   animation: blink 1.05s steps(1) infinite;
@@ -268,7 +303,8 @@ body.menu-open .menu-icon span:nth-child(2) {
     transform: none !important;
   }
   .marquee,
-  .caret {
+  .caret,
+  .sticker-float {
     animation: none;
   }
 }

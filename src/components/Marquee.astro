@@ -8,10 +8,20 @@ const items = [...marqueeItems, ...marqueeItems];
 <section aria-hidden="true" class="marquee-track relative overflow-hidden border-y border-white/5 py-6">
   <div class="marquee" style="--duration: 32s;">
     {
-      items.map((item) => (
+      items.map((item, i) => (
         <div class="flex items-center gap-6 px-6">
           <span class="font-display text-2xl font-medium text-ink/80 lg:text-4xl">{item}</span>
-          <span class="text-lime">✦</span>
+          {/* Brand separator: the play-triangle from the kit, alternating solid / outline */}
+          <svg
+            viewBox="0 0 14 16"
+            class="h-4 w-3.5 shrink-0 text-yellow"
+            fill={i % 2 === 0 ? 'currentColor' : 'none'}
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M1.5 1.5 L12.5 8 L1.5 14.5 Z" />
+          </svg>
         </div>
       ))
     }

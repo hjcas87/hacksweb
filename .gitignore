@@ -30,3 +30,7 @@ pnpm-debug.log*
 # vercel
 .vercel
 .env*
+
+# raw brand kit from the client — only the curated subset in public/brand/ ships
+public/LOGO_RECURSOS/
+public/images_client/

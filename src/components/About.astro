@@ -6,10 +6,19 @@ import { stats } from '../data/site';
   <div class="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.85fr_1fr]">
     <!-- Photo placeholder with parallax + floating badge -->
     <div class="reveal relative">
+      <!-- Brand sticker · decorative only -->
+      <img
+        src="/brand/planet.webp"
+        alt=""
+        aria-hidden="true"
+        width="420"
+        height="420"
+        class="sticker-float pointer-events-none absolute -left-6 -top-10 z-10 w-20 opacity-90 lg:-left-12 lg:w-28"
+      />
       <div class="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
         <div
           data-parallax="120"
-          class="absolute inset-0 scale-110 bg-gradient-to-br from-violet/50 via-space-3 to-cyan/40"
+          class="absolute inset-0 scale-110 bg-gradient-to-br from-lila/45 via-space-3 to-yellow/35"
         >
         </div>
         <div class="absolute inset-0 flex items-center justify-center">
@@ -22,7 +31,7 @@ import { stats } from '../data/site';
         data-magnetic="0.25"
         class="absolute -bottom-6 -right-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-space-2/90 px-5 py-4 backdrop-blur-xl"
       >
-        <span class="text-2xl">🚀</span>
+        <img src="/brand/rocket.png" alt="" width="192" height="192" class="h-7 w-7" />
         <div>
           <p class="font-display text-sm font-semibold">Fundadora</p>
           <p class="text-xs text-muted">HACKS Digital</p>
@@ -32,8 +41,8 @@ import { stats } from '../data/site';
 
     <!-- Copy -->
     <div>
-      <p class="reveal mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-lime">
-        <span class="inline-block h-px w-10 bg-lime"></span>
+      <p class="reveal mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow">
+        <span class="inline-block h-px w-10 bg-yellow"></span>
         Quién está detrás
       </p>
       <h2 class="reveal font-display text-h2 font-bold">

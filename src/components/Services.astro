@@ -3,11 +3,21 @@ import { monthlyServices, oneShotServices } from '../data/site';
 ---
 
 <section id="servicios" class="relative px-6 py-24 lg:px-10 lg:py-36">
-  <div class="mx-auto max-w-7xl">
+  <!-- Brand sticker · sits behind the content, decorative only -->
+  <img
+    src="/brand/bolt.webp"
+    alt=""
+    aria-hidden="true"
+    width="320"
+    height="463"
+    class="sticker-float pointer-events-none absolute right-4 top-10 hidden w-16 opacity-70 lg:block lg:w-24"
+  />
+
+  <div class="relative mx-auto max-w-7xl">
     <div class="reveal mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-lime">
-          <span class="inline-block h-px w-10 bg-lime"></span>
+        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow">
+          <span class="inline-block h-px w-10 bg-yellow"></span>
           Qué hacemos
         </p>
         <h2 class="font-display text-h2 font-bold">
@@ -31,7 +41,7 @@ import { monthlyServices, oneShotServices } from '../data/site';
             data-cursor
             class="group reveal relative grid grid-cols-[auto_1fr] items-center gap-6 border-b border-white/10 py-7 transition-colors duration-500 hover:bg-white/[0.03] md:grid-cols-[6rem_1fr_1.5fr] md:py-9"
           >
-            <span class="font-display text-sm text-muted transition-colors group-hover:text-lime md:text-base">
+            <span class="font-display text-sm text-muted transition-colors group-hover:text-yellow md:text-base">
               {service.id}
             </span>
             <h3 class="font-display text-h3 font-semibold transition-transform duration-500 group-hover:translate-x-2">
@@ -55,7 +65,7 @@ import { monthlyServices, oneShotServices } from '../data/site';
           oneShotServices.map((service) => (
             <span
               data-cursor
-              class="reveal cursor-default rounded-full border border-white/12 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-ink/85 transition-all duration-300 hover:-translate-y-1 hover:border-lime hover:text-lime"
+              class="reveal cursor-default rounded-full border border-white/12 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-ink/85 transition-all duration-300 hover:-translate-y-1 hover:border-yellow hover:text-yellow"
             >
               {service}
             </span>

@@ -80,15 +80,15 @@ export const oneShotServices = [
 ];
 
 export const projects = [
-  { client: 'Studio Calaf', service: 'Set up Tiendanube', tint: 'from-violet/40 to-cyan/20' },
-  { client: 'Bling', service: 'Refresh Tiendanube', tint: 'from-cyan/40 to-violet/20' },
-  { client: 'TGM', service: 'Social Media', tint: 'from-lime/30 to-cyan/20' },
-  { client: 'Enrique Gagliardi', service: 'Set up WordPress', tint: 'from-violet/30 to-lime/20' },
-  { client: 'Brasil', service: 'Producción y dirección', tint: 'from-cyan/30 to-lime/20' },
-  { client: 'Tica', service: 'E-mail Marketing', tint: 'from-violet/40 to-cyan/30' },
-  { client: 'Cambel', service: 'Social Media', tint: 'from-lime/30 to-violet/20' },
-  { client: 'AAV', service: 'Paid Media', tint: 'from-cyan/40 to-violet/30' },
-  { client: 'BY', service: 'E-commerce', tint: 'from-violet/30 to-cyan/40' },
+  { client: 'Studio Calaf', service: 'Set up Tiendanube', tint: 'from-lila/45 to-space-3' },
+  { client: 'Bling', service: 'Refresh Tiendanube', tint: 'from-yellow/40 to-space-3' },
+  { client: 'TGM', service: 'Social Media', tint: 'from-yellow/35 to-lila/30' },
+  { client: 'Enrique Gagliardi', service: 'Set up WordPress', tint: 'from-lila/40 to-yellow/25' },
+  { client: 'Brasil', service: 'Producción y dirección', tint: 'from-space-3 to-lila/40' },
+  { client: 'Tica', service: 'E-mail Marketing', tint: 'from-lila/50 to-yellow/30' },
+  { client: 'Cambel', service: 'Social Media', tint: 'from-yellow/45 to-space-3' },
+  { client: 'AAV', service: 'Paid Media', tint: 'from-space-3 to-yellow/35' },
+  { client: 'BY', service: 'E-commerce', tint: 'from-lila/35 to-yellow/40' },
 ];
 
 export const testimonials = [

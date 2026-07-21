@@ -115,7 +115,7 @@ function initRocketCursor() {
     rxTo(e.clientX);
     ryTo(e.clientY);
 
-    // point the rocket toward the direction of travel (🚀 base points up-right)
+    // point the rocket toward the direction of travel (artwork points up-right)
     const dx = e.clientX - lastX;
     const dy = e.clientY - lastY;
     if (Math.abs(dx) + Math.abs(dy) > 1) {

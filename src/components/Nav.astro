@@ -15,11 +15,14 @@ const socials = [
   class="fixed inset-x-0 top-0 z-50 transition-colors duration-500 [&.is-scrolled]:border-b [&.is-scrolled]:border-white/5 [&.is-scrolled]:bg-space/70 [&.is-scrolled]:backdrop-blur-xl"
 >
   <nav class="relative z-50 mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-    <a href="#top" class="group flex items-center gap-2" data-magnetic="0.2">
-      <span class="font-display text-xl font-bold tracking-tight">HACKS</span>
-      <span
-        class="h-1.5 w-1.5 rounded-full bg-lime transition-transform duration-500 group-hover:scale-150"
-      ></span>
+    <a href="#top" class="group flex items-center" data-magnetic="0.2" aria-label="HACKS · inicio">
+      <img
+        src="/brand/logo-hacks.webp"
+        alt="HACKS"
+        width="720"
+        height="398"
+        class="h-11 w-auto transition-transform duration-500 group-hover:scale-105 md:h-12"
+      />
     </a>
 
     <ul class="hidden items-center gap-8 md:flex">
@@ -43,7 +46,7 @@ const socials = [
         target="_blank"
         rel="noopener"
         data-magnetic="0.4"
-        class="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold backdrop-blur transition-colors hover:border-lime hover:text-lime md:inline-flex"
+        class="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold backdrop-blur transition-colors hover:border-yellow hover:text-yellow md:inline-flex"
       >
         Hablemos
       </a>
@@ -76,7 +79,7 @@ const socials = [
           <li>
             <a
               href={item.href}
-              class="block py-2 font-display text-4xl font-light lowercase text-ink transition-colors hover:text-lime"
+              class="block py-2 font-display text-4xl font-light lowercase text-ink transition-colors hover:text-yellow"
             >
               {item.label}
             </a>
@@ -90,7 +93,7 @@ const socials = [
         href={whatsappUrl}
         target="_blank"
         rel="noopener"
-        class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime px-6 py-4 font-display font-semibold text-space"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-yellow px-6 py-4 font-display font-semibold text-space"
       >
         Hablemos por WhatsApp →
       </a>

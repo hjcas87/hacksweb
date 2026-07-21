@@ -33,7 +33,18 @@ src/
   components/            # Nav, Hero, Marquee, Services, Projects, About,
                          # Testimonials, Podcast, Contact, Footer
   pages/index.astro      # composes the page
+public/
+  brand/                 # curated brand assets (logos, stickers, icons) — committed
+  LOGO_RECURSOS/         # raw kit from the client — gitignored, source only
 ```
+
+## Brand
+
+Accents come from the client's kit: yellow `#f5dc89` and lila `#e4d2e9`, exposed as the
+`yellow` / `lila` Tailwind tokens in `global.css`. The logo uses the "VERSION NEGRO"
+artwork (white lockup made for dark backgrounds); the neon lambda is the favicon and
+app icon. `public/LOGO_RECURSOS/` holds the untouched kit and is not committed — to
+regenerate `public/brand/`, re-crop from there.
 
 ## Deploy (Vercel)
 
@@ -42,8 +53,8 @@ Static build — no adapter needed. Import the repo in Vercel; it auto-detects A
 
 ## Notes / next steps
 
-- Images are colored placeholders (`[ Foto ]`). Swap for real assets in the relevant
-  components + `public/`.
+- Photos are still colored placeholders (`[ Foto ]`, project cards). Swap for real
+  assets in the relevant components + `public/`.
 - Content lives in `src/data/site.ts` — edit copy there, not in components.
 - Reduced-motion and touch devices are handled: rocket cursor and heavy animation are
   disabled; the layout degrades gracefully.
