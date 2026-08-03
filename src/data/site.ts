@@ -78,6 +78,7 @@ export const oneShotServices = [
   { id: '07', title: 'Shooting digital' },
   { id: '08', title: 'Creación de contenido' },
   { id: '09', title: 'Producción y dirección de shootings' },
+  { id: '10', title: 'Consultorías personalizadas' },
 ];
 
 export const projects = [
@@ -98,36 +99,42 @@ export const testimonials = [
       'Con HACKS me sentí súper acompañada y cómoda desde el minuto cero. Son CAPOS en lo que hacen: el acompañamiento en pauta es excelente y los resúmenes mensuales, impecables.',
     author: 'Flor',
     handle: '@bas_creative',
+    avatar: '/images/testimonials/bascreative.png',
   },
   {
     quote:
       'Más allá de estar súper conforme con los resultados, destaco la responsabilidad y la excelente atención. Se nota que hay un equipo que sabe lo que hace. Anímense a delegar.',
     author: 'Agus',
     handle: '@minilike_egresaditos',
+    avatar: '/images/testimonials/minilike.png',
   },
   {
     quote:
       'Habían caído las ventas, decidimos reactivar redes y hacer publicidad digital, y nos está dando muy buen resultado. Están en todo lo que necesito. ¡Los recomiendo!',
     author: 'Alberto',
     handle: '@cambeleventos',
+    avatar: '/images/testimonials/cambeleventos.png',
   },
   {
     quote:
       '6 años trabajando juntos y la marca creció un montón con HACKS. Asumieron el compromiso como si BY fuese de ellos. La organización y las propuestas comerciales, lo que más destaco.',
     author: 'Matías',
     handle: '@bylenceria',
+    avatar: '/images/testimonials/bylenceria.jpg',
   },
   {
     quote:
       'Trabajar con HACKS fue un antes y un después. Empezamos con el manual de marca y hoy seguimos en paid media: la mejora fue notable en todo. 100% recomendados.',
     author: 'Karen',
     handle: '@amoravosdenim',
+    avatar: '/images/testimonials/amoravosdenim.png',
   },
   {
     quote:
       'Destaco la calidad humana del equipo, la predisposición para escuchar y la rapidez para resolver. Buscan entender el negocio y acompañarnos con propuestas que aportan valor.',
     author: 'Celeste',
     handle: '@tica.sustentable',
+    avatar: '/images/testimonials/tica.png',
   },
 ];
 
@@ -148,11 +155,11 @@ export const studio = {
   title: 'Nuestro estudio',
   desc: 'Fotos, video y contenido con identidad propia. Tenemos estudio propio, equipado y listo para producir la próxima campaña de tu marca.',
   // Curated, web-optimized shots (raw HEIC lives in the gitignored client_images/).
+  // Three panels for the expanding accordion — the branded placa leads.
   photos: [
-    { src: '/images/studio-placa.jpg', alt: 'HACKS Estudio', span: true },
+    { src: '/images/studio-placa.jpg', alt: 'HACKS Estudio' },
     { src: '/images/studio-01.jpg', alt: 'Set de fotografía del estudio HACKS' },
-    { src: '/images/studio-02.jpg', alt: 'Iluminación y softboxes del estudio' },
-    { src: '/images/studio-03.jpg', alt: 'Estudio HACKS con vista a la ciudad' },
+    { src: '/images/studio-02.jpg', alt: 'Iluminación y ciclorama del estudio HACKS' },
   ],
 };
 

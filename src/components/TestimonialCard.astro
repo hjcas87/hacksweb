@@ -3,35 +3,44 @@ interface Props {
   quote: string;
   author: string;
   handle: string;
+  avatar?: string;
 }
 
-const { quote, author, handle } = Astro.props;
+const { quote, author, handle, avatar } = Astro.props;
 
-// The @handle is the client's Instagram — link straight to the profile.
+// The @handle is the client's Instagram — the whole card links to the profile.
 const profileUrl = `https://www.instagram.com/${handle.replace(/^@/, '')}`;
 ---
 
-<figure
+<a
+  href={profileUrl}
+  target="_blank"
+  rel="noopener"
   data-cursor
-  class="flex w-[85vw] shrink-0 flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-space-2/60 p-7 backdrop-blur-sm transition-colors duration-500 hover:border-white/25 sm:w-[26rem]"
+  aria-label={`Ver ${handle} en Instagram`}
+  class="group flex w-[85vw] shrink-0 flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-space-2/60 p-7 backdrop-blur-sm transition-colors duration-500 hover:border-white/25 sm:w-[26rem]"
 >
   <blockquote class="text-[15px] leading-relaxed text-ink/90">“{quote}”</blockquote>
   <figcaption class="flex items-center gap-3">
-    <span
-      class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-lila to-yellow font-display text-sm font-bold text-space"
-    >
-      {author.charAt(0)}
-    </span>
+    {
+      avatar ? (
+        <img
+          src={avatar}
+          alt={`${author} · ${handle}`}
+          loading="lazy"
+          width="220"
+          height="220"
+          class="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/15"
+        />
+      ) : (
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-lila to-yellow font-display text-sm font-bold text-space">
+          {author.charAt(0)}
+        </span>
+      )
+    }
     <div>
       <p class="font-display text-sm font-semibold">{author}</p>
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noopener"
-        class="link-underline text-xs text-muted transition-colors hover:text-yellow"
-      >
-        {handle}
-      </a>
+      <p class="text-xs text-muted transition-colors group-hover:text-yellow">{handle}</p>
     </div>
   </figcaption>
-</figure>
+</a>

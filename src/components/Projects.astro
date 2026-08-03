@@ -22,10 +22,15 @@ import { projects } from '../data/site';
             data-cursor
             class:list={[
               'group reveal relative overflow-hidden rounded-2xl border border-white/10',
-              // uniform stack on mobile; editorial masonry only from md up
-              i % 5 === 0
+              // uniform stack on mobile; editorial layout only from md up:
+              //   idx 0 → tall photo (spans two rows)
+              //   idx 5 → wide landscape banner (spans all three columns)
+              //   rest → square. Fills the block with no leftover gap.
+              i === 0
                 ? 'aspect-[16/10] sm:aspect-square md:row-span-2 md:aspect-auto'
-                : 'aspect-[16/10] sm:aspect-square',
+                : i === 5
+                  ? 'aspect-[16/10] sm:aspect-square md:col-span-3 md:aspect-[21/9]'
+                  : 'aspect-[16/10] sm:aspect-square',
             ]}
           >
             <div
