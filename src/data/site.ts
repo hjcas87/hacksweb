@@ -17,6 +17,7 @@ export const nav = [
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Podhacks', href: '#podhacks' },
+  { label: 'Estudio', href: '#estudio' },
 ];
 
 /** Words that rotate in the hero headline. */
@@ -34,8 +35,8 @@ export const marqueeItems = [
 
 export const stats = [
   { value: 6, suffix: '+', label: 'años en órbita' },
-  { value: 50, suffix: '+', label: 'marcas acompañadas' },
-  { value: 9, suffix: '', label: 'servicios activos' },
+  { value: 200, suffix: '+', label: 'marcas acompañadas' },
+  { value: 15, suffix: '', label: 'servicios activos' },
   { value: 100, suffix: '%', label: 'foco en resultados' },
 ];
 
@@ -68,15 +69,15 @@ export const monthlyServices = [
 ];
 
 export const oneShotServices = [
-  'Refresh en Tiendanube',
-  'Set up en Tiendanube',
-  'Set up en WordPress',
-  'Set up sitio a medida',
-  'Re-branding',
-  'Manual de marca',
-  'Shooting digital',
-  'Creación de contenido',
-  'Producción y dirección de shootings',
+  { id: '01', title: 'Refresh en Tiendanube' },
+  { id: '02', title: 'Set up en Tiendanube' },
+  { id: '03', title: 'Set up en WordPress' },
+  { id: '04', title: 'Set up sitio a medida' },
+  { id: '05', title: 'Re-branding' },
+  { id: '06', title: 'Manual de marca' },
+  { id: '07', title: 'Shooting digital' },
+  { id: '08', title: 'Creación de contenido' },
+  { id: '09', title: 'Producción y dirección de shootings' },
 ];
 
 export const projects = [
@@ -137,4 +138,29 @@ export const podcast = {
   spotify:
     'https://open.spotify.com/show/6piM7FMLnoWfSv2AOfR949?si=UmqrC1suTFeEIuUK5M5eYw',
   handle: '@podhacks_',
+};
+
+/** HACKS Estudio — the in-house content/photo studio. The section shows a
+ *  peek of the space and links out to the Instagram profile. */
+export const studio = {
+  handle: '@hacksestudio_',
+  url: 'https://www.instagram.com/hacksestudio_',
+  title: 'Nuestro estudio',
+  desc: 'Fotos, video y contenido con identidad propia. Tenemos estudio propio, equipado y listo para producir la próxima campaña de tu marca.',
+  // Curated, web-optimized shots (raw HEIC lives in the gitignored client_images/).
+  photos: [
+    { src: '/images/studio-placa.jpg', alt: 'HACKS Estudio', span: true },
+    { src: '/images/studio-01.jpg', alt: 'Set de fotografía del estudio HACKS' },
+    { src: '/images/studio-02.jpg', alt: 'Iluminación y softboxes del estudio' },
+    { src: '/images/studio-03.jpg', alt: 'Estudio HACKS con vista a la ciudad' },
+  ],
+};
+
+/** Tiendanube "Partner Expert" certification — shown as a trust badge. */
+export const partners = {
+  tiendanube: {
+    badge: '/images/tiendanube-expert.png',
+    label: 'Tiendanube Partner Expert',
+    url: 'https://www.tiendanube.com/partners',
+  },
 };

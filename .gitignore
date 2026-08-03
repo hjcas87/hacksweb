@@ -31,6 +31,7 @@ pnpm-debug.log*
 .vercel
 .env*
 
-# raw brand kit from the client — only the curated subset in public/brand/ ships
+# raw client assets — only the curated, web-optimized subsets ship:
+#   public/brand/  (logos, stickers, icons)   public/images/ (photos)
 public/LOGO_RECURSOS/
-public/images_client/
+public/client_images/

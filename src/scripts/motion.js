@@ -265,23 +265,38 @@ function initReveals() {
     });
   });
 
-  // counters
+  // counters — re-run every time the stat scrolls into view (not just once)
   document.querySelectorAll('[data-count]').forEach((el) => {
     const target = parseFloat(el.getAttribute('data-count') || '0');
     const obj = { v: 0 };
+    let tween;
+
+    const run = () => {
+      tween?.kill();
+      obj.v = 0;
+      tween = gsap.to(obj, {
+        v: target,
+        duration: 1.6,
+        ease: 'power2.out',
+        onUpdate: () => {
+          el.textContent = Math.round(obj.v).toString();
+        },
+      });
+    };
+    const reset = () => {
+      tween?.kill();
+      obj.v = 0;
+      el.textContent = '0';
+    };
+
     ScrollTrigger.create({
       trigger: el,
       start: 'top 90%',
-      once: true,
-      onEnter: () =>
-        gsap.to(obj, {
-          v: target,
-          duration: 1.6,
-          ease: 'power2.out',
-          onUpdate: () => {
-            el.textContent = Math.round(obj.v).toString();
-          },
-        }),
+      end: 'bottom 10%',
+      onEnter: run,
+      onEnterBack: run,
+      onLeave: reset,
+      onLeaveBack: reset,
     });
   });
 }

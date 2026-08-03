@@ -35,7 +35,9 @@ src/
   pages/index.astro      # composes the page
 public/
   brand/                 # curated brand assets (logos, stickers, icons) — committed
-  LOGO_RECURSOS/         # raw kit from the client — gitignored, source only
+  images/                # curated content photos (studio, badges) — committed
+  LOGO_RECURSOS/         # raw brand kit from the client — gitignored, source only
+  client_images/         # raw client photos (HEIC) — gitignored, source only
 ```
 
 ## Brand
@@ -53,8 +55,11 @@ Static build — no adapter needed. Import the repo in Vercel; it auto-detects A
 
 ## Notes / next steps
 
-- Photos are still colored placeholders (`[ Foto ]`, project cards). Swap for real
-  assets in the relevant components + `public/`.
+- The founder photo (`[ Foto · Belu ]`) and project cards are still colored
+  placeholders. Swap for real assets in the relevant components + `public/images/`.
+- Real client photos ship web-optimized in `public/images/`; the raw HEIC/JPEG
+  sources live in the gitignored `public/client_images/` (re-crop from there).
+  The `#estudio` section (`Studio.astro`) is the `@hacksestudio_` Instagram feed.
 - Content lives in `src/data/site.ts` — edit copy there, not in components.
 - Reduced-motion and touch devices are handled: rocket cursor and heavy animation are
   disabled; the layout degrades gracefully.

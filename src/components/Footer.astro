@@ -1,5 +1,5 @@
 ---
-import { contact, nav } from '../data/site';
+import { contact, nav, partners } from '../data/site';
 
 const year = 2026;
 const socials = [
@@ -25,6 +25,21 @@ const socials = [
         <p class="mt-4 max-w-xs text-sm text-muted">
           Universo HACKS · Estudio de marketing digital. Llevamos tu marca a otra órbita.
         </p>
+        <a
+          href={partners.tiendanube.url}
+          target="_blank"
+          rel="noopener"
+          aria-label={partners.tiendanube.label}
+          class="mt-6 inline-flex opacity-80 transition-opacity hover:opacity-100"
+        >
+          <img
+            src={partners.tiendanube.badge}
+            alt={partners.tiendanube.label}
+            width="1250"
+            height="469"
+            class="h-10 w-auto"
+          />
+        </a>
       </div>
 
       <div class="grid grid-cols-2 gap-10 sm:grid-cols-3">

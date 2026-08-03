@@ -6,6 +6,9 @@ interface Props {
 }
 
 const { quote, author, handle } = Astro.props;
+
+// The @handle is the client's Instagram — link straight to the profile.
+const profileUrl = `https://www.instagram.com/${handle.replace(/^@/, '')}`;
 ---
 
 <figure
@@ -21,7 +24,14 @@ const { quote, author, handle } = Astro.props;
     </span>
     <div>
       <p class="font-display text-sm font-semibold">{author}</p>
-      <p class="text-xs text-muted">{handle}</p>
+      <a
+        href={profileUrl}
+        target="_blank"
+        rel="noopener"
+        class="link-underline text-xs text-muted transition-colors hover:text-yellow"
+      >
+        {handle}
+      </a>
     </div>
   </figcaption>
 </figure>
