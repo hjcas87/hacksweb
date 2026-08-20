@@ -81,13 +81,27 @@ export const oneShotServices = [
   { id: '10', title: 'Consultorías personalizadas' },
 ];
 
+// Cards with a `video` play a looping, muted clip instead of the gradient tint
+// (the tint stays as a poster/background fallback while the video loads).
 export const projects = [
-  { client: 'Studio Calaf', service: 'Set up Tiendanube', tint: 'from-lila/45 to-space-3' },
+  {
+    client: 'Studio Calaf',
+    service: 'Set up Tiendanube',
+    tint: 'from-lila/45 to-space-3',
+    video: '/videos/studio-calaf.mp4',
+    poster: '/images/studio-calaf-poster.jpg',
+  },
   { client: 'Bling', service: 'Refresh Tiendanube', tint: 'from-yellow/40 to-space-3' },
-  { client: 'TGM', service: 'Social Media', tint: 'from-yellow/35 to-lila/30' },
-  { client: 'Enrique Gagliardi', service: 'Set up WordPress', tint: 'from-lila/40 to-yellow/25' },
+  { client: 'TGM', service: 'Manual de marca', tint: 'from-yellow/35 to-lila/30' },
+  { client: 'Tica', service: 'E-mail Marketing', tint: 'from-lila/40 to-yellow/25' },
   { client: 'Brasil', service: 'Producción y dirección', tint: 'from-space-3 to-lila/40' },
-  { client: 'Tica', service: 'E-mail Marketing', tint: 'from-lila/50 to-yellow/30' },
+  {
+    client: 'Enrique Gagliardi',
+    service: 'Set up WordPress',
+    tint: 'from-lila/50 to-yellow/30',
+    video: '/videos/enrique.mp4',
+    poster: '/images/enrique-poster.jpg',
+  },
   { client: 'Cambel', service: 'Social Media', tint: 'from-yellow/45 to-space-3' },
   { client: 'AAV', service: 'Paid Media', tint: 'from-space-3 to-yellow/35' },
   { client: 'BY', service: 'E-commerce', tint: 'from-lila/35 to-yellow/40' },
@@ -136,6 +150,13 @@ export const testimonials = [
     handle: '@tica.sustentable',
     avatar: '/images/testimonials/tica.png',
   },
+  {
+    quote:
+      'Arrancamos con MODESHA y sumamos SAMADOYO unos meses después. Veníamos de no encontrarle la vuelta a la comunicación y hoy tenemos un servicio 360 con un equipo que se alineó a las marcas y nos ayudó a crecer.',
+    author: 'Javier',
+    handle: '@bymodesha',
+    avatar: '/images/testimonials/bymodesha.png',
+  },
 ];
 
 export const podcast = {
@@ -154,12 +175,15 @@ export const studio = {
   url: 'https://www.instagram.com/hacksestudio_',
   title: 'Nuestro estudio',
   desc: 'Fotos, video y contenido con identidad propia. Tenemos estudio propio, equipado y listo para producir la próxima campaña de tu marca.',
-  // Curated, web-optimized shots (raw HEIC lives in the gitignored client_images/).
-  // Three panels for the expanding accordion — the branded placa leads.
+  // Curated, web-optimized shots (raw HEIC lives in the gitignored fotos estudio/).
+  // Behind-the-scenes stills for the auto-scrolling filmstrip carousel.
   photos: [
-    { src: '/images/studio-placa.jpg', alt: 'HACKS Estudio' },
     { src: '/images/studio-01.jpg', alt: 'Set de fotografía del estudio HACKS' },
-    { src: '/images/studio-02.jpg', alt: 'Iluminación y ciclorama del estudio HACKS' },
+    { src: '/images/estudio-01.jpg', alt: 'Producción de contenido en el estudio HACKS' },
+    { src: '/images/estudio-02.jpg', alt: 'Sesión de fotos grupal en el estudio HACKS' },
+    { src: '/images/estudio-03.jpg', alt: 'Shooting con modelo en el estudio HACKS' },
+    { src: '/images/estudio-04.jpg', alt: 'Set de iluminación del estudio HACKS' },
+    { src: '/images/estudio-05.jpg', alt: 'Styling de prendas en el estudio HACKS' },
   ],
 };
 

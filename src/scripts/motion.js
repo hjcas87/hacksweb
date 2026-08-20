@@ -302,22 +302,6 @@ function initReveals() {
 }
 
 /* ------------------------------------------------------------------ *
- *  Expanding image accordion (studio gallery)
- *  CSS drives hover on desktop; this adds tap/click support for touch.
- * ------------------------------------------------------------------ */
-function initAccordion() {
-  document.querySelectorAll('[data-accordion]').forEach((acc) => {
-    const panels = acc.querySelectorAll('[data-panel]');
-    panels.forEach((panel) => {
-      panel.addEventListener('click', () => {
-        panels.forEach((p) => p.classList.remove('is-active'));
-        panel.classList.add('is-active');
-      });
-    });
-  });
-}
-
-/* ------------------------------------------------------------------ *
  *  Nav state on scroll
  * ------------------------------------------------------------------ */
 function initNav() {
@@ -342,7 +326,6 @@ function boot() {
   initReveals();
   initNav();
   initMobileMenu();
-  initAccordion();
   ScrollTrigger.refresh();
 }
 

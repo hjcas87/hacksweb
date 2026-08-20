@@ -22,6 +22,9 @@ pnpm-debug.log*
 # macOS
 .DS_Store
 
+# client feedback dumps (WhatsApp/Word exports) — local only
+conversation.txt
+
 # editor
 .vscode/*
 !.vscode/extensions.json
@@ -36,3 +39,5 @@ pnpm-debug.log*
 public/LOGO_RECURSOS/
 public/client_images/
 public/testmonials/
+public/fotos estudio/
+public/ARCHIVOS PARA LOS CUADRADOS/

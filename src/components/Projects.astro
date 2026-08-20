@@ -33,12 +33,25 @@ import { projects } from '../data/site';
                   : 'aspect-[16/10] sm:aspect-square',
             ]}
           >
-            <div
-              class:list={[
-                'absolute inset-0 bg-gradient-to-br transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110',
-                project.tint,
-              ]}
-            />
+            {project.video ? (
+              <video
+                src={project.video}
+                poster={project.poster}
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+              />
+            ) : (
+              <div
+                class:list={[
+                  'absolute inset-0 bg-gradient-to-br transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110',
+                  project.tint,
+                ]}
+              />
+            )}
             <div class="absolute inset-0 bg-space/20 transition-colors duration-500 group-hover:bg-space/0" />
 
             <div class="absolute inset-0 flex flex-col justify-end p-5">

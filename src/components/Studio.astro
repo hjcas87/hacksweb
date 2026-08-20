@@ -1,10 +1,13 @@
 ---
 import { studio } from '../data/site';
+
+// Duplicate the set so the -50% marquee keyframe loops seamlessly.
+const strip = [...studio.photos, ...studio.photos];
 ---
 
-<section id="estudio" class="relative px-6 py-24 lg:px-10 lg:py-36">
-  <div class="mx-auto max-w-7xl">
-    <div class="reveal mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<section id="estudio" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="reveal mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
         <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow">
           <span class="inline-block h-px w-10 bg-yellow"></span>
@@ -14,75 +17,59 @@ import { studio } from '../data/site';
       </div>
       <p class="max-w-md text-muted">{studio.desc}</p>
     </div>
+  </div>
 
-    <!-- Expanding accordion: hover (desktop) or tap (touch) grows a panel,
-         the others shrink to strips. Handled by initAccordion in motion.js. -->
-    <div
-      data-accordion
-      class="reveal accordion h-[22rem] sm:h-[28rem] lg:h-[34rem]"
-    >
+  <!-- Compact auto-scrolling filmstrip. Pauses on hover; loops seamlessly. -->
+  <div class="marquee-track reveal relative overflow-hidden">
+    <div class="marquee" style="--duration: 55s;">
       {
-        studio.photos.map((photo, i) => (
-          <div
-            data-panel
-            data-cursor
-            class:list={[
-              'accordion-panel group border border-white/10',
-              i === 0 && 'is-active',
-            ]}
-          >
-            <img src={photo.src} alt={photo.alt} loading="lazy" />
-            {/* hover wash + IG glyph */}
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-space/70 via-space/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              class="pointer-events-none absolute right-4 top-4 h-6 w-6 translate-y-1 text-ink opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-            </svg>
-            {i === 0 && (
-              <span class="pointer-events-none absolute bottom-4 left-4 rounded-full bg-space/70 px-4 py-2 font-display text-sm font-semibold text-ink backdrop-blur-sm">
-                {studio.handle}
-              </span>
-            )}
+        strip.map((photo) => (
+          <div class="mr-4 h-48 w-72 shrink-0 overflow-hidden rounded-2xl border border-white/10 sm:h-60 sm:w-[22rem]">
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
           </div>
         ))
       }
     </div>
-
-    <div class="reveal mt-10 flex justify-center md:justify-start">
-      <a
-        href={studio.url}
-        target="_blank"
-        rel="noopener"
-        data-magnetic="0.35"
-        class="group inline-flex items-center gap-2.5 rounded-full bg-yellow px-7 py-3.5 font-display font-semibold text-space transition-transform hover:scale-[1.03]"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-        </svg>
-        Seguinos en Instagram
-        <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
-      </a>
+    <!-- edge fades so the strip melts into the section -->
+    <div
+      class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-space to-transparent lg:w-28"
+    >
     </div>
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-space to-transparent lg:w-28"
+    >
+    </div>
+  </div>
+
+  <div class="mx-auto mt-10 flex max-w-7xl justify-center px-6 md:justify-start lg:px-10">
+    <a
+      href={studio.url}
+      target="_blank"
+      rel="noopener"
+      data-magnetic="0.35"
+      class="group inline-flex items-center gap-2.5 rounded-full bg-yellow px-7 py-3.5 font-display font-semibold text-space transition-transform hover:scale-[1.03]"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+      Seguinos en Instagram
+      <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+    </a>
   </div>
 </section>
