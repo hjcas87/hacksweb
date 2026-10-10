@@ -12,6 +12,13 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/company/hacks-digital/',
 };
 
+export const founder = {
+  name: 'Belu Fiora',
+  role: 'Fundadora · HACKS Digital',
+  linkLabel: 'Know the founder',
+  linkedin: 'https://www.linkedin.com/in/belu-fiora-44577813a',
+};
+
 export const nav = [
   { label: 'Servicios', href: '#servicios' },
   { label: 'Proyectos', href: '#proyectos' },
@@ -149,10 +156,10 @@ export const projects = [
     poster: '/images/cambel-poster.jpg',
   },
   {
-    // The client can't disclose this brand, so the card plays up the secrecy instead.
-    client: 'Misión clasificada',
-    service: 'Paid Media · Marca bajo NDA',
-    badge: 'Top secret',
+    // The client can't disclose this brand, so the card is shown anonymised.
+    client: 'Cliente confidencial',
+    service: 'Paid Media',
+    badge: 'NDA',
     tint: 'from-space-3 to-yellow/35',
     video: '/videos/paid-media.mp4',
     poster: '/images/paid-media-poster.jpg',

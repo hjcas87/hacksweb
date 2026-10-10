@@ -1,5 +1,5 @@
 ---
-import { stats } from '../data/site';
+import { founder, stats } from '../data/site';
 ---
 
 <section id="nosotros" class="relative px-6 py-24 lg:px-10 lg:py-36">
@@ -15,28 +15,42 @@ import { stats } from '../data/site';
         height="420"
         class="sticker-float pointer-events-none absolute -left-6 -top-10 z-10 w-20 opacity-90 lg:-left-12 lg:w-28"
       />
-      <div class="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
+      <div class="relative">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
+          <div
+            data-parallax="120"
+            class="absolute inset-0 scale-110 bg-gradient-to-br from-lila/45 via-space-3 to-yellow/35"
+          >
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="font-display text-sm uppercase tracking-[0.3em] text-white/40">
+              [ Foto · Belu ]
+            </span>
+          </div>
+        </div>
         <div
-          data-parallax="120"
-          class="absolute inset-0 scale-110 bg-gradient-to-br from-lila/45 via-space-3 to-yellow/35"
+          data-magnetic="0.25"
+          class="absolute -bottom-6 -right-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-space-2/90 px-5 py-4 backdrop-blur-xl"
         >
-        </div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="font-display text-sm uppercase tracking-[0.3em] text-white/40">
-            [ Foto · Belu ]
-          </span>
+          <img src="/brand/rocket.png" alt="" width="192" height="192" class="h-7 w-7" />
+          <div>
+            <p class="font-display text-sm font-semibold">{founder.name}</p>
+            <p class="text-xs text-muted">{founder.role}</p>
+          </div>
         </div>
       </div>
-      <div
-        data-magnetic="0.25"
-        class="absolute -bottom-6 -right-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-space-2/90 px-5 py-4 backdrop-blur-xl"
+      <a
+        href={founder.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor
+        class="group mt-12 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-yellow"
       >
-        <img src="/brand/rocket.png" alt="" width="192" height="192" class="h-7 w-7" />
-        <div>
-          <p class="font-display text-sm font-semibold">Fundadora</p>
-          <p class="text-xs text-muted">HACKS Digital</p>
-        </div>
-      </div>
+        <span class="border-b border-yellow/40 pb-1 transition-colors group-hover:border-yellow">
+          {founder.linkLabel}
+        </span>
+        <span class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+      </a>
     </div>
 
     <!-- Copy -->
