@@ -1,5 +1,8 @@
 ---
-import { projects } from '../data/site';
+import { projects, SlideKind } from '../data/site';
+
+const mediaClass =
+  'absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105';
 ---
 
 <section id="proyectos" class="relative px-6 py-24 lg:px-10 lg:py-36">
@@ -33,7 +36,10 @@ import { projects } from '../data/site';
                   : 'aspect-[16/10] sm:aspect-square',
             ]}
           >
-            {project.video ? (
+            <div
+              class:list={['absolute inset-0 bg-gradient-to-br', project.tint]}
+            />
+            {project.video && (
               <video
                 src={project.video}
                 poster={project.poster}
@@ -42,17 +48,46 @@ import { projects } from '../data/site';
                 loop
                 playsinline
                 preload="metadata"
-                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-              />
-            ) : (
-              <div
-                class:list={[
-                  'absolute inset-0 bg-gradient-to-br transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110',
-                  project.tint,
-                ]}
+                class={mediaClass}
               />
             )}
+            {project.slides && (
+              <div data-slideshow class={mediaClass}>
+                {project.slides.map((slide, slideIndex) =>
+                  slide.kind === SlideKind.Video ? (
+                    <video
+                      data-slide
+                      src={slide.src}
+                      muted
+                      playsinline
+                      preload="none"
+                      class="slide absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      data-slide
+                      src={slide.src}
+                      alt=""
+                      loading={slideIndex === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      class="slide absolute inset-0 h-full w-full object-cover"
+                    />
+                  ),
+                )}
+                <div class="absolute inset-x-5 top-5 z-10 flex gap-1" aria-hidden="true">
+                  {project.slides.map(() => (
+                    <span data-slide-dot class="slide-dot h-0.5 flex-1 rounded-full bg-white/25" />
+                  ))}
+                </div>
+              </div>
+            )}
+            {project.badge && (
+              <span class="classified-badge absolute left-4 top-4 z-10 rounded-full border border-yellow/60 bg-space/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-yellow backdrop-blur">
+                {project.badge}
+              </span>
+            )}
             <div class="absolute inset-0 bg-space/20 transition-colors duration-500 group-hover:bg-space/0" />
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-space/85 to-transparent" />
 
             <div class="absolute inset-0 flex flex-col justify-end p-5">
               <p class="translate-y-2 text-xs font-semibold uppercase tracking-wider text-yellow opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -72,3 +107,7 @@ import { projects } from '../data/site';
     </div>
   </div>
 </section>
+
+<script>
+  import '../scripts/slideshow.js';
+</script>

@@ -81,8 +81,16 @@ export const oneShotServices = [
   { id: '10', title: 'Consultorías personalizadas' },
 ];
 
-// Cards with a `video` play a looping, muted clip instead of the gradient tint
-// (the tint stays as a poster/background fallback while the video loads).
+// Cards with a `video` play a looping, muted clip; cards with `slides` crossfade through
+// a mixed image/video sequence. The tint stays as the background while media loads.
+export const SlideKind = { Image: 'image', Video: 'video' } as const;
+export type SlideKind = (typeof SlideKind)[keyof typeof SlideKind];
+
+const image = (src: string) => ({ kind: SlideKind.Image, src });
+const video = (src: string) => ({ kind: SlideKind.Video, src });
+const numbered = (dir: string, count: number) =>
+  Array.from({ length: count }, (_, i) => image(`${dir}/${String(i + 1).padStart(2, '0')}.jpg`));
+
 export const projects = [
   {
     client: 'Studio Calaf',
@@ -91,10 +99,41 @@ export const projects = [
     video: '/videos/studio-calaf.mp4',
     poster: '/images/studio-calaf-poster.jpg',
   },
-  { client: 'Bling', service: 'Refresh Tiendanube', tint: 'from-yellow/40 to-space-3' },
-  { client: 'TGM', service: 'Manual de marca', tint: 'from-yellow/35 to-lila/30' },
-  { client: 'Tica', service: 'E-mail Marketing', tint: 'from-lila/40 to-yellow/25' },
-  { client: 'Brasil', service: 'Producción y dirección', tint: 'from-space-3 to-lila/40' },
+  {
+    client: 'Bling',
+    service: 'Refresh Tiendanube',
+    tint: 'from-yellow/40 to-space-3',
+    video: '/videos/bling.mp4',
+    poster: '/images/bling-poster.jpg',
+  },
+  {
+    client: 'TGM',
+    service: 'Manual de marca',
+    tint: 'from-yellow/35 to-lila/30',
+    slides: numbered('/images/projects/tgm', 8),
+  },
+  {
+    client: 'Tica',
+    service: 'E-mail Marketing',
+    tint: 'from-lila/40 to-yellow/25',
+    slides: [
+      image('/images/projects/tica/01.jpg'),
+      image('/images/projects/tica/02.jpg'),
+      video('/images/projects/tica/03.mp4'),
+      image('/images/projects/tica/04.jpg'),
+      image('/images/projects/tica/05.jpg'),
+      video('/images/projects/tica/06.mp4'),
+      image('/images/projects/tica/07.jpg'),
+      image('/images/projects/tica/08.jpg'),
+      image('/images/projects/tica/09.jpg'),
+    ],
+  },
+  {
+    client: 'Brasil',
+    service: 'Producción y dirección',
+    tint: 'from-space-3 to-lila/40',
+    slides: numbered('/images/projects/brasil', 11),
+  },
   {
     client: 'Enrique Gagliardi',
     service: 'Set up WordPress',
@@ -102,9 +141,29 @@ export const projects = [
     video: '/videos/enrique.mp4',
     poster: '/images/enrique-poster.jpg',
   },
-  { client: 'Cambel', service: 'Social Media', tint: 'from-yellow/45 to-space-3' },
-  { client: 'AAV', service: 'Paid Media', tint: 'from-space-3 to-yellow/35' },
-  { client: 'BY', service: 'E-commerce', tint: 'from-lila/35 to-yellow/40' },
+  {
+    client: 'Cambel',
+    service: 'Social Media',
+    tint: 'from-yellow/45 to-space-3',
+    video: '/videos/cambel.mp4',
+    poster: '/images/cambel-poster.jpg',
+  },
+  {
+    // The client can't disclose this brand, so the card plays up the secrecy instead.
+    client: 'Misión clasificada',
+    service: 'Paid Media · Marca bajo NDA',
+    badge: 'Top secret',
+    tint: 'from-space-3 to-yellow/35',
+    video: '/videos/paid-media.mp4',
+    poster: '/images/paid-media-poster.jpg',
+  },
+  {
+    client: 'BY',
+    service: 'E-commerce',
+    tint: 'from-lila/35 to-yellow/40',
+    video: '/videos/by.mp4',
+    poster: '/images/by-poster.jpg',
+  },
 ];
 
 export const testimonials = [
