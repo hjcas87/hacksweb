@@ -20,8 +20,7 @@ const mediaClass =
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
       {
         projects.map((project, i) => (
-          <a
-            href="#"
+          <article
             data-cursor
             class:list={[
               'group reveal relative overflow-hidden rounded-2xl border border-white/10',
@@ -98,10 +97,7 @@ const mediaClass =
               </h3>
             </div>
 
-            <span class="absolute right-4 top-4 text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-              ↗
-            </span>
-          </a>
+          </article>
         ))
       }
     </div>
