@@ -4,7 +4,7 @@ import { founder, stats } from '../data/site';
 
 <section id="nosotros" class="relative px-6 py-24 lg:px-10 lg:py-36">
   <div class="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.5fr_1fr]">
-    <!-- Photo placeholder with parallax + floating badge · kept compact on purpose -->
+    <!-- Founder photo with parallax + floating badge · kept compact on purpose -->
     <div class="reveal relative mx-auto w-full max-w-[16rem] lg:mx-0 lg:max-w-xs">
       <!-- Brand sticker · decorative only -->
       <img
@@ -17,16 +17,16 @@ import { founder, stats } from '../data/site';
       />
       <div class="relative">
         <div class="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
-          <div
+          <img
             data-parallax="120"
-            class="absolute inset-0 scale-110 bg-gradient-to-br from-lila/45 via-space-3 to-yellow/35"
-          >
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="font-display text-sm uppercase tracking-[0.3em] text-white/40">
-              [ Foto · Belu ]
-            </span>
-          </div>
+            src={founder.photo}
+            alt={founder.name}
+            width="787"
+            height="1400"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 h-full w-full scale-110 object-cover object-[50%_35%]"
+          />
         </div>
         <div class="absolute -bottom-8 -right-6 lg:-right-10">
           <a

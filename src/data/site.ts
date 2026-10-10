@@ -15,6 +15,7 @@ export const contact = {
 export const founder = {
   name: 'Belu Fiora',
   role: 'Fundadora · HACKS Digital',
+  photo: '/images/founder.jpg',
   linkLabel: 'Know the founder',
   linkedin: 'https://www.linkedin.com/in/belu-fiora-44577813a',
 };
