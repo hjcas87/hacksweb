@@ -77,17 +77,59 @@ export const monthlyServices = [
 ];
 
 export const oneShotServices = [
-  { id: '01', title: 'Refresh en Tiendanube' },
-  { id: '02', title: 'Set up en Tiendanube' },
-  { id: '03', title: 'Set up en WordPress' },
-  { id: '04', title: 'Set up sitio a medida' },
-  { id: '05', title: 'Re-branding' },
-  { id: '06', title: 'Manual de marca' },
-  { id: '07', title: 'Shooting digital' },
-  { id: '08', title: 'Creación de contenido' },
-  { id: '09', title: 'Producción y dirección de shootings' },
-  { id: '10', title: 'Consultorías personalizadas' },
+  {
+    id: '01',
+    title: 'Refresh en Tiendanube',
+    desc: 'Renovamos el diseño de tu tienda para que se vea actual y venda mejor.',
+  },
+  {
+    id: '02',
+    title: 'Set up en Tiendanube',
+    desc: 'Armamos tu tienda desde cero, lista para empezar a vender.',
+  },
+  {
+    id: '03',
+    title: 'Set up en WordPress',
+    desc: 'Tu sitio en WordPress, configurado y listo para salir al aire.',
+  },
+  {
+    id: '04',
+    title: 'Set up sitio a medida',
+    desc: 'Un sitio pensado y desarrollado a la medida de tu marca.',
+  },
+  {
+    id: '05',
+    title: 'Re-branding',
+    desc: 'Actualizamos la identidad de tu marca sin perder su esencia.',
+  },
+  {
+    id: '06',
+    title: 'Manual de marca',
+    desc: 'Las reglas de tu identidad visual, claras y en un solo lugar.',
+  },
+  {
+    id: '07',
+    title: 'Shooting digital',
+    desc: 'Fotos de producto y campaña listas para tu tienda y tus redes.',
+  },
+  {
+    id: '08',
+    title: 'Creación de contenido',
+    desc: 'Piezas puntuales para un lanzamiento, una campaña o una fecha clave.',
+  },
+  {
+    id: '09',
+    title: 'Producción y dirección de shootings',
+    desc: 'Del concepto al set: planificamos, producimos y dirigimos tu sesión.',
+  },
+  {
+    id: '10',
+    title: 'Consultorías personalizadas',
+    desc: 'Sesiones a medida para destrabar tu estrategia digital.',
+  },
 ];
+
+export const motto = 'Relax, we do it.';
 
 // Cards with a `video` play a looping, muted clip; cards with `slides` crossfade through
 // a mixed image/video sequence. The tint stays as the background while media loads.

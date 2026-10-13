@@ -1,5 +1,5 @@
 ---
-import { contact } from '../data/site';
+import { contact, motto } from '../data/site';
 
 const whatsappUrl = `https://wa.me/${contact.whatsapp}`;
 const mailtoUrl = `mailto:${contact.email}`;
@@ -52,5 +52,9 @@ const mailtoUrl = `mailto:${contact.email}`;
         {contact.email}
       </a>
     </div>
+
+    <p class="reveal mt-16 font-display text-h3 font-semibold italic">
+      <span class="text-brand-gradient">{motto}</span>
+    </p>
   </div>
 </section>
