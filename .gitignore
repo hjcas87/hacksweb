@@ -34,10 +34,6 @@ conversation.txt
 .vercel
 .env*
 
-# raw client assets — only the curated, web-optimized subsets ship:
-#   public/brand/  (logos, stickers, icons)   public/images/ (photos)
-public/LOGO_RECURSOS/
-public/client_images/
-public/testmonials/
-public/fotos estudio/
-public/ARCHIVOS PARA LOS CUADRADOS/
+# raw client assets live outside public/ so they never ship in dist/;
+# only the curated, web-optimized subsets go in public/brand and public/images
+client-assets/

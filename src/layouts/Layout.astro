@@ -1,15 +1,36 @@
 ---
 import '../styles/global.css';
+import { contact } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
+const SITE_NAME = 'HACKS Digital';
+const OG_IMAGE_PATH = '/brand/og-image.jpg';
+const OG_IMAGE_WIDTH = 1200;
+const OG_IMAGE_HEIGHT = 630;
+const LOGO_PATH = '/brand/logo-hacks-neon-tagline.webp';
+
 const {
   title = 'HACKS · Agencia de marketing digital',
   description = 'Agencia de marketing digital. Llevamos tu marca a otra órbita: social, paid media, e-commerce, contenido y branding.',
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(OG_IMAGE_PATH, Astro.site);
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: Astro.site?.href,
+  logo: new URL(LOGO_PATH, Astro.site).href,
+  email: contact.email,
+  telephone: contact.whatsappDisplay,
+  sameAs: [contact.instagramStudio, contact.linkedin],
+};
 ---
 
 <!doctype html>
@@ -23,12 +44,26 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content={OG_IMAGE_WIDTH} />
+    <meta property="og:image:height" content={OG_IMAGE_HEIGHT} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="theme-color" content="#05050b" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
